@@ -1,0 +1,49 @@
+package com.myspace.example1;
+
+import java.math.BigDecimal;
+
+import java.util.HashMap;
+
+
+rule "AccumulatePrice"
+lock-on-active 
+when
+    $result: Result() 
+    $item : Item ($c1:category)
+    accumulate(
+      Item (category == $c1, $price : price); 
+      $total: sum($price)
+    )
+then
+    $result.collectResults($c1, new BigDecimal($total.toString()));
+    System.out.println("============================");
+    $result.print();
+    update($result);
+end
+
+
+rule "test"
+lock-on-active 
+when
+    $test : String()
+then
+    $test = "updated";
+    update($test);
+end
+
+rule "test2"
+lock-on-active 
+when
+    $sample : Sample()
+    $map : HashMap()
+then
+    $map.put("key", "value");
+    update($map)
+    
+    $sample.data.put("test", "123");
+    $sample.setField1("testing");
+    
+    update($sample)
+    
+end
+

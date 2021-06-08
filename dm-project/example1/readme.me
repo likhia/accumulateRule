@@ -1,0 +1,17 @@
+rule "Concat Strings in a group"
+enabled false
+when
+    $item : Item ($c1:category, $name: name)
+    $result: Result(category == $c1)
+then
+    $result.setName($result.getName() + "," + $name);
+end
+
+rule "Sum of item value in a group"
+enabled false
+when
+    $item : Item ($c1:category, $price: price)
+    $result: Result(category == $c1)
+then
+    $result.setPrice($result.getPrice() + $price);
+end
