@@ -43,9 +43,12 @@ public class DMNApp {
     //private static final String modelNamespace = "https://kiegroup.org/dmn/_130EFB28-D8FD-495B-B01E-13B72C1F4907";
     //private static final String modelName = "SampleDMN2";
 
-    private static final String modelNamespace = "https://kiegroup.org/dmn/_779852A8-1977-4863-8BC0-7D5ED2AEF291";
-    private static final String modelName = "ListDMN";
+    //private static final String modelNamespace = "https://kiegroup.org/dmn/_779852A8-1977-4863-8BC0-7D5ED2AEF291";
+    //private static final String modelName = "ListDMN";
 
+    private static final String modelNamespace = "https://kiegroup.org/dmn/_16E70A7B-2BBE-4E3F-9F99-B79AEDEB0026";
+    private static final String modelName = "ListDMN2";
+    
     public static void main(String[] args) {
         try {
            
@@ -70,15 +73,16 @@ public class DMNApp {
             List<String> nameList = new ArrayList();
             nameList.add("IPP");
             nameList.add("TEST");
+            nameList.add("Cat1");
 
             entityList.setName(nameList);
 
             DMNContext dmnContext = dmnClient.newContext(); 
-            //dmnContext.set("category", "Cat1");
+            dmnContext.set("category", "Cat1");
             //dmnContext.set("costprice", Double.valueOf(10.00));
             //dmnContext.set("quantity", Integer.valueOf(1))
             
-            dmnContext.set("entityList", entityList );
+            //dmnContext.set("CategoryList", entityList );
             
            
             ServiceResponse<DMNResult> serverResp =   dmnClient.evaluateAll(containerName, modelNamespace, modelName, dmnContext);
