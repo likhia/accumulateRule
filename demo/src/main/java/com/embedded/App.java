@@ -4,19 +4,13 @@ import java.util.Arrays;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
-
-import org.kie.dmn.api.core.DMNRuntime;
+import org.kie.api.runtime.KieRuntimeFactory;
+import org.kie.dmn.api.core.DMNContext;
+import org.kie.dmn.api.core.DMNDecisionResult;
 import org.kie.dmn.api.core.DMNModel;
 import org.kie.dmn.api.core.DMNResult;
-import org.kie.dmn.api.core.DMNDecisionResult;
-import org.kie.dmn.api.core.DMNContext;
+import org.kie.dmn.api.core.DMNRuntime;
 
-
-/**
- * Hello world!
- *
- */
 public class App 
 {
 
@@ -27,7 +21,7 @@ public class App
         
         ks.getResources().newClassPathResource("AgeDMN.dmn", this.getClass());
 
-        DMNRuntime dmnRuntime = kContainer.newKieSession("ksession-rules").getKieRuntime(DMNRuntime.class);
+        DMNRuntime dmnRuntime = KieRuntimeFactory.of(kContainer.getKieBase()).get(DMNRuntime.class);
 
         String namespace = "https://kiegroup.org/dmn/_C61C4369-2155-4E9A-A57C-A7AD9404CD12";
         String modelName = "AgeDMN";
