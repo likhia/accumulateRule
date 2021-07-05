@@ -107,7 +107,7 @@
           <artifactId>exec-maven-plugin</artifactId>
           <version>3.0.0</version>
           <configuration>
-              <mainClass>com.myspace.example1.TestApp</mainClass>
+              <mainClass>com.myspace.example1.App</mainClass>
           </configuration>
       </plugin>
         <!-- other Maven plugins ... -->

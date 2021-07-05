@@ -72,17 +72,16 @@ public class DMNApp {
             EntityList entityList = new EntityList();
             List<String> nameList = new ArrayList();
             nameList.add("IPP");
-            nameList.add("TEST");
-            nameList.add("Cat1");
-
+            nameList.add("Test");
             entityList.setName(nameList);
 
             DMNContext dmnContext = dmnClient.newContext(); 
-            dmnContext.set("category", "Cat1");
-            //dmnContext.set("costprice", Double.valueOf(10.00));
-            //dmnContext.set("quantity", Integer.valueOf(1))
+
+            //ListDMN
+            dmnContext.set("entityList", entityList );
             
-            //dmnContext.set("CategoryList", entityList );
+            //ListDMN2
+            dmnContext.set("category", "Cat1");
             
            
             ServiceResponse<DMNResult> serverResp =   dmnClient.evaluateAll(containerName, modelNamespace, modelName, dmnContext);

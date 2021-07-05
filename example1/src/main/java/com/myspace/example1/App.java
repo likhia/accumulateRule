@@ -75,7 +75,7 @@ public class App {
             item5.setCategory("cat1");
             item5.setPrice(new BigDecimal("20.00"));
         
-            
+             
             Result result = new Result(); 
             KieCommands kieCommands = KieServices.Factory.get().getCommands();
             List<Command> commandList = new ArrayList<Command>();
@@ -95,7 +95,6 @@ public class App {
             ServiceResponse<ExecutionResults> executeResponse = ruleClient.executeCommandsWithResults(containerName, batch);
 
             List<Result> resultList = (List<Result>) executeResponse.getResult().getValue("result");
-            System.out.println(resultList.size());
             for(int i=0; i < resultList.size(); i++) {
                 Result res = (Result) resultList.get(i);
                 res.print();
